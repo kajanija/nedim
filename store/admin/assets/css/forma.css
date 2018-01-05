@@ -1,0 +1,18 @@
+.input{
+    min-width: 30%;
+    min-height: 50px;
+    font-size: 20px;
+}
+.finish{
+    min-width: 100%;
+    min-height: 60px;
+    font-size: 20px;
+    background-color: white;
+    
+}
+.kate{
+    font-size: 40px;
+}
+.category{
+    min-height: 60px;
+}

@@ -1,0 +1,71 @@
+<form method="post" >
+<?php
+if(isset($_GET["page"])){
+if($_GET["page"]==1){
+if(isset($_POST["sub1"])){
+    $host=$_POST["host"];
+        $user=$_POST["user"];
+        
+        $pass=$_POST["pass"];
+        
+        $dbname=$_POST["dbname"];
+    $data='<?php
+    $con=mysqli_connect("'.$host.'","'.$user.'","'.$pass.'","'.$dbname.'");
+    ?>';
+    $fh=fopen('../db.php','w+');
+    if(fwrite($fh,$data)){
+        echo'RADI';
+        
+        
+    }
+    fclose($fh);
+    header("Location: ?page=2");
+        
+}
+
+
+echo'
+<input type="text" name="host" placeholder="HOST SERVER" />
+    <input type="text" name="user" placeholder="USER NAME" />
+    <input type="text" name="pass" placeholder="PASSWORD" />
+    <input type="text" name="dbname" placeholder="DATABASE NAME" />
+    <input type="submit" name="sub1" value="NEXT" />
+
+
+';
+}
+if($_GET["page"]==2){
+    echo'
+<input type="email" name="email" placeholder="email" />
+    <input type="text" name="url" placeholder="URL OF SITE" />
+    
+    <input type="submit" name="sub2" value="NEXT" />
+
+
+';
+    if(isset($_POST["sub2"])){
+        $email=$_POST["email"];
+        $url=$_POST["url"];
+        include '../db.php';
+        
+        $query=mysqli_query($con,"UPDATE storeinfo SET emil='$email' WHERE id='1'");
+        if($query){
+            header("Location: ?page=3");
+        }
+    }
+    
+    
+    
+}
+    
+    
+if($_GET["page"]=="finish"){
+   
+    
+    
+}else{
+    header("Location: ?page=1");
+}
+
+    ?>
+    </form>

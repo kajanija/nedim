@@ -1,0 +1,2 @@
+echo'<a data-toggle="collapse" data-target="#opis">EDIT DESCRIPTION</a>';
+            echo'<div id="opis" class="collapse"><textarea class="ckeditor" style="max-height:500px; max-width:500px;" name="opis">'.$opis.'</textarea></div>';
